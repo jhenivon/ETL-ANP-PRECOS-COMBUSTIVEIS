@@ -31,7 +31,7 @@ Problemas identificados:
 * Inconsistência de tipos (string vs numérico)
 * Variações de nomenclatura em produtos e unidades
 
-🥈 Camada Silver (Dados Tratados)
+## 🥈 Camada Silver (Dados Tratados)
 
 Nesta etapa, os dados são transformados para garantir consistência, confiabilidade e padronização.
 
@@ -40,79 +40,86 @@ Nesta etapa, os dados são transformados para garantir consistência, confiabili
 * Bronze: 813731 linhas
 * Silver: 804617 linhas
 * Remoção: 9.114 linhas 
-804617 - 9114
+* Diferença de Linhas 813731 - 9114 = 804617
 * Gold: 804617 linhas
 
 
-🔧 Regras e Transformações Aplicadas
+## 🔧 Regras e Transformações Aplicadas
 
 🧹 1. Deduplicação
 
-Antes:
+**Antes**:
 Registros repetidos por combinação de data + produto + revenda
-Depois:
+
+**Depois**:
 Remoção dos dados duplicados
 
 ❌ 2. Tratamento de Nulos
 
-Antes:
+**Antes**:
 Campos críticos (valor, data, produto) com nulos
-Depois:
+
+**Depois**:
 Remoção de registros inválidos em campos essenciais
 Garantia de integridade analítica
 
-⛽ 3. Padronização de Unidade de Medida
+## ⛽ 3. Padronização de Unidade de Medida
 
-Antes:
+**Antes**:
 "R$ / litro", "R$ / m³", "R$ / m3", "null"
-Depois:
+
+**Depois**:
 "R$ / litro", R$ / m³
 
 Resultado:
 
 Comparabilidade uniforme entre todos os registros
 
-💰 4. Conversão de Tipos (Valor_Venda)
+## 💰 4. Conversão de Tipos (Valor_Venda)
 
-Antes:
+**Antes**:
 STRING com inconsistências (vírgula/ponto/texto)
-Depois:
+
+**Depois**:
 DECIMAL(10,2)
 
 Impacto:
 
 Permite agregações corretas (AVG, SUM, MIN, MAX)
 
-📅 5. Validação de Datas
+## 📅 5. Validação de Datas
 
-Antes:
+**Antes**:
 múltiplos formatos e datas inválidas
-Depois:
+
+**Depois**:
 formato DATE padronizado e filtrado
 
 Impacto:
 
 Base confiável para análise temporal
 
-⛽ 6. Padronização de Produtos
+## ⛽ 6. Padronização de Produtos
 
-Antes:
+**Antes**:
 variações como “gasolina comum”, “gasolina comum aditivada”, etc.
-Depois:
+
+**Depois**:
 categorias normalizadas de combustíveis
 
 Impacto:
 
 Análise comparável entre produtos equivalentes
 
-🏷️ 7. Padronização de Colunas
+## 🏷️ 7. Padronização de Colunas
 
-Antes:
+**Antes**:
 "Valor Venda", "Data da Coleta", "Regiao - Sigla"
-Depois:
+
+**Depois**:
 valor_venda, data_coleta, regiao_sigla
 
-🏷️ 8. Coluna Valor de Compra
+## 🏷️ 8. Coluna Valor de Compra
 não possuía preenchimento para o período analisado.
 Adicionalmente, foi consultada a documentação oficial da ANP, que informa a descontinuação da coleta 
 desse campo a partir do segundo semestre de 2020.
@@ -146,5 +153,5 @@ Modelagem de dados analíticos
 Construção de datasets confiáveis para BI
 
 A saida dessa tabela **gold_combustivel** será usada em um Projeto de ANP_Analytc que já está pronto.
-E Será disponibilizado no Github.
+E Será disponibilizado no Github em Breve...
 
